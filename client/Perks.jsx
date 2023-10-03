@@ -11,7 +11,12 @@ function Perks({ selected, onChange }) {
   return (
     <>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="wifi" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("wifi")}
+          name="wifi"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -29,7 +34,12 @@ function Perks({ selected, onChange }) {
         <span>Wi-Fi</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="tv" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("tv")}
+          name="tv"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -47,7 +57,12 @@ function Perks({ selected, onChange }) {
         <span>TV</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="pets" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("pets")}
+          name="pets"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -62,7 +77,12 @@ function Perks({ selected, onChange }) {
         <span>Pets</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="parking" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("parking")}
+          name="parking"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -80,7 +100,12 @@ function Perks({ selected, onChange }) {
         <span>Parking spot</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="washer" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("washer")}
+          name="washer"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -95,7 +120,12 @@ function Perks({ selected, onChange }) {
         <span>Washer</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="kitchen" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("kitchen")}
+          name="kitchen"
+          onChange={handleOnChange}
+        />
         <svg
           fill="none"
           stroke="currentColor"
@@ -111,7 +141,12 @@ function Perks({ selected, onChange }) {
         <span>Kitchen</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="longStay" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("longStay")}
+          name="longStay"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -125,14 +160,24 @@ function Perks({ selected, onChange }) {
         <span>Long term stays allowed</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="hairDryer" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("hairDryer")}
+          name="hairDryer"
+          onChange={handleOnChange}
+        />
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
           <path d="M10 12.73A70.39 70.39 0 0017 11V4s-6.5-2-9.5-2a5.5 5.5 0 00-1.38 10.82L7 19h1a3 3 0 001.46 2.33A3.15 3.15 0 0111 24h1a4.12 4.12 0 00-1.91-3.45C9.39 20 9 19.63 9 19h1M4 7.5A3.5 3.5 0 017.5 4 37.08 37.08 0 0115 5.5v4A37.08 37.08 0 017.5 11 3.5 3.5 0 014 7.5M22 9a4.32 4.32 0 01-2.22-.55A3.4 3.4 0 0018 8V7a4.32 4.32 0 012.22.55A3.4 3.4 0 0022 8m0-2a3.4 3.4 0 01-1.78-.45A4.32 4.32 0 0018 5v1a3.4 3.4 0 011.78.45A4.32 4.32 0 0022 7m0 3a3.4 3.4 0 01-1.78-.45A4.32 4.32 0 0018 9v1a3.4 3.4 0 011.78.45A4.32 4.32 0 0022 11M9 7.5A1.5 1.5 0 117.5 6 1.5 1.5 0 019 7.5z" />
         </svg>
         <span>Hair dryer</span>
       </label>
       <label className="flex border rounded-xl gap-2 items-center p-4">
-        <input type="checkbox" name="ac" onChange={handleOnChange} />
+        <input
+          type="checkbox"
+          checked={selected.includes("ac")}
+          name="ac"
+          onChange={handleOnChange}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -148,6 +193,7 @@ function Perks({ selected, onChange }) {
       <label className="flex border rounded-xl gap-2 items-center p-4">
         <input
           type="checkbox"
+          checked={selected.includes("privateEnterance")}
           name="privateEnterance"
           onChange={handleOnChange}
         />
