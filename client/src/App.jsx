@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/profileSubPages/ProfilePage";
 import PlacesPage from "./pages/profileSubPages/PlacesPage";
 import PlacesFormPage from "./pages/profileSubPages/PlacesFormPage";
+import PlacePage from "./pages/PlacePage";
 
 import "./App.css";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>
