@@ -9,6 +9,8 @@ import ProfilePage from "./pages/profileSubPages/ProfilePage";
 import PlacesPage from "./pages/profileSubPages/PlacesPage";
 import PlacesFormPage from "./pages/profileSubPages/PlacesFormPage";
 import PlacePage from "./pages/PlacePage";
+import BookingPage from "./pages/BookingPage";
+import BookingsPage from "./pages/BookingsPage";
 
 import "./App.css";
 
@@ -28,6 +30,8 @@ function App() {
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/account/bookings" element={<BookingsPage/>} />
+          <Route path="/account/bookings/:id" element={<BookingPage/>} />
         </Route>
       </Routes>
     </UserContextProvider>
