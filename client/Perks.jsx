@@ -1,4 +1,4 @@
-function Perks({ selected, onChange }) {
+function Perks({ selected, onChange=null }) {
   const handleOnChange = (e) => {
     const { checked, name } = e.target;
     if (checked) {
@@ -15,6 +15,7 @@ function Perks({ selected, onChange }) {
           type="checkbox"
           checked={selected.includes("wifi")}
           name="wifi"
+          disabled={!onChange}
           onChange={handleOnChange}
         />
         <svg
@@ -37,6 +38,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("tv")}
+          disabled={!onChange}
           name="tv"
           onChange={handleOnChange}
         />
@@ -60,6 +62,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("pets")}
+          disabled={!onChange}
           name="pets"
           onChange={handleOnChange}
         />
@@ -80,6 +83,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("parking")}
+          disabled={!onChange}
           name="parking"
           onChange={handleOnChange}
         />
@@ -103,6 +107,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("washer")}
+          disabled={!onChange}
           name="washer"
           onChange={handleOnChange}
         />
@@ -123,6 +128,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("kitchen")}
+          disabled={!onChange}
           name="kitchen"
           onChange={handleOnChange}
         />
@@ -144,6 +150,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("longStay")}
+          disabled={!onChange}
           name="longStay"
           onChange={handleOnChange}
         />
@@ -163,6 +170,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("hairDryer")}
+          disabled={!onChange}
           name="hairDryer"
           onChange={handleOnChange}
         />
@@ -175,6 +183,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("ac")}
+          disabled={!onChange}
           name="ac"
           onChange={handleOnChange}
         />
@@ -194,6 +203,7 @@ function Perks({ selected, onChange }) {
         <input
           type="checkbox"
           checked={selected.includes("privateEnterance")}
+          disabled={!onChange}
           name="privateEnterance"
           onChange={handleOnChange}
         />

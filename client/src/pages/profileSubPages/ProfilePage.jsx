@@ -3,7 +3,7 @@ import { UserContext } from "../../UserContext";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Places from "./PlacesPage";
-import AccountNav from "../../AccountNav";
+import AccountNav from "../../components/AccountNav";
 
 function ProfilePage() {
   const { user, isReady, setUser } = useContext(UserContext);
