@@ -34,7 +34,7 @@ function getUserDataFromReq(req) {
         jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
             if (err) throw err
             resolve(userData)
-          })
+        })
     })
 }
 
@@ -164,7 +164,7 @@ app.get('/places', async (req, res) => {
 
 app.post('/bookings', async (req, res) => {
     const userData = await getUserDataFromReq(req);
-    const {place, checkIn, checkOut, numberOfGuests, name, phone, price} = req.body;
+    const { place, checkIn, checkOut, numberOfGuests, name, phone, price } = req.body;
     Booking.create({
         place, user: userData.id, checkIn, checkOut, numberOfGuests, name, phone, price
     }).then(placeDoc => {
@@ -175,8 +175,24 @@ app.post('/bookings', async (req, res) => {
 })
 
 app.get('/bookings', async (req, res) => {
-   const userData = await getUserDataFromReq(req);
-   res.json(await Booking.find({user: userData.id}).populate('place'))
+    const userData = await getUserDataFromReq(req);
+    res.json(await Booking.find({ user: userData.id }).populate('place'))
+})
+
+app.put('/bookings', async (req, res) => {
+    const { token } = req.cookies;
+    const { id, place, checkIn, checkOut, numberOfGuests, name, phone, price } = req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const bookingDoc = await Booking.findById(id);
+        if (userData.id === bookingDoc.user.toString()) {
+            bookingDoc.set({
+                place, checkIn, checkOut, numberOfGuests, name, phone, price
+            })
+            await bookingDoc.save();
+            res.json('ok');
+        }
+    })
 })
 
 app.listen(3000)

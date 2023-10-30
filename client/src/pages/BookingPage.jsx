@@ -10,12 +10,15 @@ import Perks from "../../Perks";
 function BookingPage() {
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
+  const [numberOfGuests, setNumberOfGuests] = useState(null);
+  const [isEditGuestsDisabled, setIsEditGuestsDisabled] = useState(true);
   useEffect(() => {
     if (id) {
       axios.get("/bookings").then((response) => {
         const foundBooking = response.data.find(({ _id }) => _id === id);
         if (foundBooking) {
           setBooking(foundBooking);
+          setNumberOfGuests(foundBooking.numberOfGuests);
         }
       });
     }
@@ -24,6 +27,31 @@ function BookingPage() {
   if (!booking) {
     return null;
   }
+
+  const changeNumberOfGuests = async (e) => {
+    e.preventDefault();
+    if (isEditGuestsDisabled) {
+      setIsEditGuestsDisabled(false);
+    } else {
+      if (numberOfGuests > booking.place.maxGuests) {
+        alert(
+          `Error! Max number of guests is ${booking.place.maxGuests}, we cannot place ${numberOfGuests} guests in this place`
+        );
+      } else if (id) {
+        await axios.put("/bookings", {
+          id,
+          numberOfGuests,
+          place: booking.place,
+          checkIn: booking.checkIn,
+          checkOut: booking.checkOut,
+          name: booking.name,
+          phone: booking.phone,
+          price: booking.price,
+        });
+        setIsEditGuestsDisabled(true);
+      }
+    }
+  };
 
   return (
     <div className="main-container py-8">
@@ -70,8 +98,21 @@ function BookingPage() {
                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
               />
             </svg>
-            {booking.numberOfGuests}{" "}
-            {booking.numberOfGuests > 1 ? "guests" : "guest"}
+            <input
+              type="number"
+              className="numberOfGuests"
+              onChange={(e) => setNumberOfGuests(e.target.value)}
+              value={numberOfGuests}
+              disabled={isEditGuestsDisabled}
+            ></input>
+            <button
+              className="px-3 py-1 rounded-lg hover:bg-gray-200"
+              onClick={changeNumberOfGuests}
+            >
+              {isEditGuestsDisabled ? "Edit" : "Save"}
+            </button>
+            {!isEditGuestsDisabled &&
+              `Max number of guests is ${booking.place.maxGuests}`}
           </div>
           {booking.place?.checkIn && booking.place?.checkOut && (
             <div className="text-lg">
